@@ -105,3 +105,36 @@ These divisions have several advantages. Users can not lock up the server by con
 > - _Ext4_, the default filesystem historically used in Linux. Overcomes certain limitations, is particularly appropiate for very
 >   large capacity hard drives.
 > - _btrfs_, is experimental, which includes numeroud features that require, to this day, the use of LVM and/or RAID.
+
+## Manual partitioning
+
+You only need to choose the windows partition and enter its new size (this woeks the same with both unencrypted fat and NTFS)
+This tool is useful if you are doing a dual boot.
+
+> **Virtual memory swap**
+>
+> Allows the linux kernel, when lacking sufficient memory (RAM), to free a bit of memory by stoing the parts of the RAM that have been inactive for some time on the swap partition of the hard disk. It is also fundamental to the "suspend" and "hibernate" features of a system.
+
+When you choosing a partition, you can indicate the manner in which you are going to use it:
+
+- format it and include it in the file tree by choosing a mount point;
+- use it as a swap partition;
+- make it into a “physical volume for encryption” (to protect the confidentiality of data on certain partitions, see below);
+- make it a “physical volume for LVM” (this concept is discussed in greater detail later in this chapter);
+- use it as a RAID device (see later in this chapter);
+- you can also choose not to use it, and therefore leave it unchanged.
+
+## what is a LVM?
+
+LVM allows you to create “virtual” partitions that span over several disks. The benefits are twofold: the size of the partitions are no longer limited by individual disks but by their cumulative volume, and you can resize existing partitions at any time, possibly after adding an additional disk when needed.
+
+## Configuring the package manager (apt)
+
+in order to be able to install additional software, APT needs to be configured and told where to find Debian packages. This steps is as automated as possible.
+
+## Desktop enviroment
+
+If you are installing a server, the best practice is no select any desktop enviroment.
+
+If is a personal or workstation: gnome or kde
+else if a low requirements pc: xcfe
