@@ -1,0 +1,12 @@
+Revoluciones industriales:
+  1- Automatizaxión de procesos con maquinaria a vapor.
+  2- energia electrica y producción en masa.
+  3- De administración y computadoras.
+  4- Inteligencia artificial y robótica.
+  5- Bioingeniería y nanotecnología.
+Cada automatizacion reduce precios de productos.
+
+Que es IA y Automatizaxión:
+  IA: Maquinas que aprenden de datos y toman decisiones inteligentes.
+  Automatizacion: Software que ejecuta tareas repetitivas sin intervencion humana.
+  N8N: Herramienta open-source para conectar aplicaciones con IA de forma visual.

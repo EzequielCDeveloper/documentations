@@ -1,0 +1,12 @@
+porque n8n? 
+  masivamente escalable
+  open source
+  Integraciones ias
+    chatgpt
+    gemini
+    anthropic
+    400 aplicaciones mas.
+  Alojar en vpn (hostinger)
+  Alojar en Localhost
+  6400 plantillas de n8n preconstruidas.
+
