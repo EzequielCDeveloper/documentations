@@ -70,6 +70,38 @@ These include:
 - **_apt-extracttemplates_**: is used by debconf to prompt for configuration
   questions before installation.
 
+## Add Kali sources to APT
+
+The best way to install Kali Linux software to your Debian Linux PC is to add the Kali rolling repo to your system. The reason this is the best way is that Kali is very similar to Debian.
+
+`sudo nvim -w /etc/apt/sources.list`
+
+Inside the sources file, add in the following line of code at the very bottom of the line:
+
+`## Kali Linux Rolling Repo ##`
+
+After adding the top line of code, you'll need to add in this second line directly bellow it. This code is the kali linux software repo URL, and without it, no software will be installed.
+
+`deb http://http.kali.org/kali kali-rooling main contrib non-free`
+
+Once Everything is saved, you'll have to import the kali linux GPG key. This GPG key is essential. Without it, software from kali doesn't work. The quickest way to import the key is to use the _add-apt-key-recover_ command below.
+
+`sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys ED444FF07D8D0BF6`
+
+With the kali Linux repo key added to your system, the next step is to run the _update_ command to refresh Debian's software sources.
+
+`sudo apt update && sudo apt -y full-upgrade -y && sudo reboot`
+
+### Installing Kali Linux
+
+Once the Kali Linux software repository is enabled on your system, you dan install kali Linux software onto your Debian system.
+
+`sudo apt install kali-tools-top10`
+
+With the before command, you install the top 10 most uses. however, if you have more specific needs, You have to install _apt search_ tool and type what you wish to search for. For example, to search for Zonemaster in the kali repos, you'd do:
+
+`apt search zonemaster`
+
 ## Multi-Arch support
 
 All Debian packages have an Architecture field in their control information. This field can contain either “all” (for packages that are architecture independent) or the name of the architecture that it targets (like “amd64”, “armhf”, …). In the latter case, by default, dpkg will only accept to install the package if its architecture matches the host's architecture as returned by dpkg --print-architecture.
