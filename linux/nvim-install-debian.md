@@ -1,5 +1,9 @@
 # Install and use of NeoVim
 
+LazyVim is a pre-configured setup for Neovim that simplifies customization and enhances the coding experience by providing a full-fledged IDE-like environment. It includes a variety of pre-installed plugins and features, making it easier for users to get started with coding in Neovim.
+
+![lazyvim](/assets/lazyvim.png)
+
 ## Install dependecies
 
 `sudo apt update`
@@ -25,14 +29,14 @@
 
 ## Core directory layout
 
-`~/.config/nvim/
-├─ init.lua                # entry point – loads LazyVim
-├─ lua/
-│  ├─ plugins/             # one *.lua file per plugin spec
-│  ├─ config/              # overrides for built‑in plugins
-│  ├─ keymaps.lua          # central place for custom mappings
-│  └─ options.lua          # global Neovim options (line numbers, etc.)
-└─ after/                  # optional Vimscript that runs after init`
+`~/.config/nvim/  
+├─ init.lua                # entry point – loads LazyVim  
+├─ lua/  
+│  ├─ plugins/             # one *.lua file per plugin spec  
+│  ├─ config/              # overrides for built‑in plugins  
+│  ├─ keymaps.lua          # central place for custom mappings  
+│  └─ options.lua          # global Neovim options (line numbers, etc.)  
+└─ after/                  # optional Vimscript that runs after init`  
 LazyVim automatically reads any `*.lua` file inside `lua/plugins`
 
 ## Adding a new plugin
