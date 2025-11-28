@@ -5,10 +5,10 @@
 
 ## Now we install nvim
 
-`curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz`
-`sudo rm -rf /opt/nvim-linux-x86_64`
-`sudo mkdir -p /opt/nvim-linux-x86_64`
-`sudo chmod a+rX /opt/nvim-linux-x86_64`
+`curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz`  
+`sudo rm -rf /opt/nvim-linux-x86_64`  
+`sudo mkdir -p /opt/nvim-linux-x86_64`  
+`sudo chmod a+rX /opt/nvim-linux-x86_64`  
 `sudo tar -C /opt -xzf nvim-linux-x86_64.tar.gz`
 
 ## make it available in /usr/local/bin, distro installs to /usr/bin
@@ -17,6 +17,6 @@
 
 ## Now we install lazyVim
 
-`git clone https://github.com/LazyVim/starter ~/.config/nvim`
-`rm -rf ~/.config/nvim/.git`
+`git clone https://github.com/LazyVim/starter ~/.config/nvim`  
+`rm -rf ~/.config/nvim/.git`  
 `nvim`
