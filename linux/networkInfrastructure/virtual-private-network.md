@@ -34,16 +34,16 @@ The second method is more recent, and was introduced with OpenSSH 4.3; it is no
 > PermitRootLogin yes
 > PermitTunnel yes
 
-- Then restart SSH service:
-  `sudo systemctl restart sshd`
+- Then restart SSH service:  
+  `sudo systemctl restart sshd`  
   We need to add a masquerade rule so that the client can access the remote network. Below are examples using either _iptables_ or _nftables_.
-- First, enable IP forwading (routing)
+- First, enable IP forwading (routing)  
   `sudo echo 1 | tee /proc/sys/net/ipv4/ip_forward`
-- Using _iptables_
+- Using _iptables_  
   `sudo iptables -t nat -A POSTROUTING -d 192.168.1.0/24 -o etch0 -j MASQUERADE`
-- Using _nftables_
+- Using _nftables_  
   `sudo nft add table ip NAT`  
-  `sudo nft add chain ip NAT my_masquerade'{ type nat hook postrouting priority 100; }'`
+  `sudo nft add chain ip NAT my_masquerade'{ type nat hook postrouting priority 100; }'`  
   `sudo nft add rule NAT my_masquerade ip daddr { 192.168.1.0/24 } oifname etch0 counter masquerade`
 
 Now that the Debian server is pre-configurated, we can move on to starting the SSH tunnel from the client.
@@ -55,22 +55,21 @@ Now that the Debian server is pre-configurated, we can move on to starting the S
   - COMMANDS:
     We will use the following parameters: - `-w local_tun[:remote_tun]`: request tunnel device forwarding between client and server using `tun` interfaces.
   - `-N`: Do not execute a remote command
-  - `-f`: Run SSH in the background after authentication.
-    `sudo ssh -Nf -w 0:0 -p 22 root@1.1.1.1`
-    Assign an IP address to the `tun0` interface:
-    `sudo ip addr add 10.110.0.200/32 peer 10.110.0.100 dev tun0`
-    Bring up the `tun0` interface:
-    `sudo ip link set tun0 up`
-    Add a route to reach the remote (server-side) network:
+  - `-f`: Run SSH in the background after authentication.  
+    `sudo ssh -Nf -w 0:0 -p 22 root@1.1.1.1`  
+    Assign an IP address to the `tun0` interface:  
+    `sudo ip addr add 10.110.0.200/32 peer 10.110.0.100 dev tun0`  
+    Bring up the `tun0` interface:  
+    `sudo ip link set tun0 up`  
+    Add a route to reach the remote (server-side) network:  
     `sudo ip route add 192.168.10/24 via 10.100.0.100`
-
-  - establishing the Tunnel (Debian)
+  - establishing the Tunnel (Debian)  
     After running the SSH command (`ssh -Nf -w 0:0`) on the client, a `tun0` virtual interface should automatically appear on the Debian server. The final step is to bring up and configure this interface on the server side.
 
-Assign an IP address to the `tun0` interface:
+Assign an IP address to the `tun0` interface:  
 `sudo ip addr add 10.110.0.100/32 peer 10.110.0.200 dev tun0`
 
-Bring up the `tun0` interface:
+Bring up the `tun0` interface:  
 `sudo ip link set tun0 up`
 
 ## References
