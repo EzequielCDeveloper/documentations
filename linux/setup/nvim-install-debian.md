@@ -6,8 +6,8 @@ LazyVim is a pre-configured setup for Neovim that simplifies customization and e
 
 ## Install dependecies
 
-`sudo apt update`
-`sudo apt install make gcc ripgrep unzip git xclip curl node`
+`sudo apt-get update`
+`sudo apt-get install make gcc ripgrep unzip git xclip curl nodejs`
 
 ## Now we install nvim
 
