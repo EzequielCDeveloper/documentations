@@ -66,4 +66,5 @@ you can launch the app via gui or terminal with:
 
 The next script you have the run in root, is an automatization for install and setup docker
 
+- `sudo su`
 - `curl -fsSL https://get.docker.com -o get-docker.sh && sh get-docker.sh`

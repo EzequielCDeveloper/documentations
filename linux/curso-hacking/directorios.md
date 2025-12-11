@@ -1,0 +1,17 @@
+- bin: carpeta estatica que almacena los binarios para funciones basicas a nivel de usuario.
+- boot: Incluye todos los archivos y binarios necesarios durante el arranque del sistema.
+- dev: Aqui yace el acceso a todos los almacenamientos o volumenes logicos del sistema, tales como particiones, discos duros, usb, entre otros.
+- etc: Almacena todos los archivos de configuracion necesarios tantos para las aplicaciones del sistema como los instalados por el usuario.
+- home: Directorio de los usuarios estandar.
+- lib: Almacena las bibliotecas necesarias para ejecutar los binarios del sistema y usuario, asi como los modulos del kernel.
+- lib64: Almacena las bibliotecas necesarias para ejecutar los binarios del sistema y usuario, que sean de 64 bits.
+- media: Representa el punto de montaje de volumenes logicos de almacenamiento temporales, tales como usb
+- opt: Directorio que funciona como extension del directorio usr. Este directorio aloja los programas de solo lectura que vienen predeterminados por el sistema.
+- proc: Directorio que lista los binarios que se encuentran en ejecucicion. Este directorio no contiene archivos, los que muestra, son 'virtuales'.
+- root: Directorio de archivos del usuario root.
+- sbin: carpeta estatica que almacena los binarios root, para tareas esenciales del sistema operativo
+- srv: (server) Directorio reservado para almacenar los directorios de servidores que se pueda tener corriendo en el sistema.
+- sys: Directorio con archivos virtuales, que representan los eventos relativos al kernel que se encuentran en ejecucion.
+- tmp: (temporal) Directorio para almacenar archivos temporales de todo tipo, por ejemplo elementos del sistema, o aplicaciones en jecucion por parte del usuario. Este directorio se vacia durante cada reinicio del sistema.
+- usr: (user system resources) Almacena todos los archivos de solo lectura y relativos a las utilidades del usuario. Ademas, tambien es posible encontrar el software instalados atraves de los gestores de paquetes de cada distribucion.
+- var: Directorio que almacena archivos con informacion del sistema, logs/emails/usuarios del sistema/bases de datos/informacion almacenada en la cache/informacion relativa a los paquetes almacenados en la carpeta 'opt'/entre otros. Podria verse como, almacenar los registros del sistema.
