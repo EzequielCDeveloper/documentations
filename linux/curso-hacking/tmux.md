@@ -1,3 +1,24 @@
+## Comparacion de terminales
+
+| Característica            | tmux                                                                          | Zsh                                                                                     | Bash                                                           |
+| ------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Tipo**                  | Multiplexor de terminal                                                       | Shell (intérprete de comandos)                                                          | Shell (intérprete de comandos)                                 |
+| **Objetivo principal**    | Gestionar múltiples sesiones y paneles en una sola terminal                   | Mejorar la experiencia de línea de comandos con completado avanzado, globbing y plugins | Compatibilidad y scripting POSIX, uso general en sistemas Unix |
+| **Gestión de sesiones**   | Sí – permite crear, nombrar y volver a sesiones                               | No (pero puede usar `screen`/`tmux` para eso)                                           | No (pero puede usar `screen`/`tmux` para eso)                  |
+| **Paneles (splits)**      | Sí – dividir la ventana en paneles horizontales/verticales                    | No                                                                                      | No                                                             |
+| **Persistencia**          | Sí – sesiones pueden permanecer después de cerrar el cliente                  | No (el estado del shell desaparece al cerrar)                                           | No (el estado del shell desaparece al cerrar)                  |
+| **Configuración**         | Archivo `~/.tmux.conf`; opciones en tiempo real con `tmux set-option`         | Archivo `~/.zshrc`; gran ecosistema de frameworks (Oh‑My‑Zsh, Prezto)                   | Archivo `~/.bashrc` o `~/.bash_profile`                        |
+| **Completado automático** | Limitado (solo para comandos de tmux)                                         | Muy avanzado, soporta menús y descripciones                                             | Básico, pero ampliable con `bash-completion`                   |
+| **Globbing y expansión**  | Hereda del shell subyacente                                                   | Extendido (por ejemplo, `**` recursivo)                                                 | Estándar POSIX                                                 |
+| **Plugins/extensiones**   | Plugins vía TPM (Tmux Plugin Manager)                                         | Amplio ecosistema de plugins (Oh‑My‑Zsh, etc.)                                          | Menos comunes; se usan scripts externos                        |
+| **Historial compartido**  | Sí – historial accesible entre paneles y sesiones                             | No (historial por instancia)                                                            | No (historial por instancia)                                   |
+| **Soporte de scripting**  | Comandos de control (`new-session`, `split-window`, etc.)                     | Scripts de shell completos                                                              | Scripts de shell completos                                     |
+| **Portabilidad**          | Disponible en Linux, macOS, BSD, Windows (WSL/Cygwin)                         | Disponible en Linux, macOS, BSD, Windows (WSL)                                          | Disponible en prácticamente todos los sistemas Unix‑like       |
+| **Curva de aprendizaje**  | Media – requiere aprender prefijos y comandos de gestión                      | Media – muchas opciones y sintaxis avanzada                                             | Baja a media – familiar para usuarios POSIX                    |
+| **Uso típico**            | Desarrollo, administración remota, trabajo con múltiples procesos simultáneos | Personalización del prompt, autocompletar, manejo de historial                          | Scripts de inicio, automatización, uso general                 |
+
+## Instalacion y uso tmux
+
 para instalar:
 
 - `sudo apt-get install tmux`
