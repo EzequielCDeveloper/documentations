@@ -27,3 +27,7 @@ agregar la anterior linea bash hasta el final de nuestro archivo de configuracio
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd>              | Buscar texto dentro del buffer activo           |
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd>              | Marcar la línea actual como punto de referencia |
 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>G</kbd>              | Ir a la línea marcada                           |
+
+## Referencias
+
+[Overview - kitty](https://sw.kovidgoyal.net/kitty/overview)
