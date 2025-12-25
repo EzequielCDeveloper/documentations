@@ -61,7 +61,7 @@ To create a Blockquote, add a > in front of a paragraph
 
 ## Blockquotes with other elements
 
-> #### The quarterly results looks great
+> #### The quarterly results looks
 >
 > - Revenue was off the chart.
 >

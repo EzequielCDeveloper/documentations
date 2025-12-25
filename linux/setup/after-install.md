@@ -12,13 +12,116 @@ How to find your interface name?
 If in down, you can turn on with:
 
 - `ip link set enp3s0 up`
+  if permission denied, you need to execute the command as user root.
+
+Error with an OUTPUT: `RTNETLINK answers: Operation not possible due to RF-kill`
+
+> rfkill is a kernel interface that lets you enable or disable radio devices (Wi‑Fi, Bluetooth, WWAN, GPS, etc.).
+> The state is stored in the kernel; it survives a reboot only if a service or script restores it.
+
+There's also the lovely solving of the rfkill (almost) Catch-22:
+
+    Wi-Fi isn't working
+
+    need* rfkill to check/correct that (or so one believes)
+
+    don't have other networking or other (at least presently reasonable) means to get the rfkill program (package containing it) onto the host
+
+    need the Wi-Fi working to get that and other software
+
+\*well, almost need, the solution:
+
+Here's your first hint:
+
+`find /proc/[!0-9]* /sys -name '*rfkill*' -print`
+
+So, e.g., a Debian host under my fingertips (on bare metal) ...
+
+with the hardware physical switch off/disabled:
+
+`grep . /sys/class/rfkill/rfkill*/{hard,soft} | sort`
+
+> /sys/class/rfkill/rfkill0/hard:1
+> /sys/class/rfkill/rfkill0/soft:1
+> /sys/class/rfkill/rfkill1/hard:1
+> /sys/class/rfkill/rfkill1/soft:1
+> /sys/class/rfkill/rfkill2/hard:1
+> /sys/class/rfkill/rfkill2/soft:1
+
+after flipping the hardware switch on:
+`grep . /sys/class/rfkill/rfkill*/{hard,soft} | sort`
+
+> /sys/class/rfkill/rfkill0/hard:1
+> /sys/class/rfkill/rfkill0/soft:1
+> /sys/class/rfkill/rfkill1/hard:0
+> /sys/class/rfkill/rfkill1/soft:1
+> /sys/class/rfkill/rfkill2/hard:0
+> /sys/class/rfkill/rfkill2/soft:1
+
+and software enabling:
+`echo 0 | tee /sys/class/rfkill/rfkill[012]/soft >>/dev/null`
+
+`grep . /sys/class/rfkill/rfkill*/{hard,soft} | sort`
+
+> /sys/class/rfkill/rfkill0/hard:0
+> /sys/class/rfkill/rfkill0/soft:0
+> /sys/class/rfkill/rfkill1/hard:0
+> /sys/class/rfkill/rfkill1/soft:0
+> /sys/class/rfkill/rfkill2/hard:0
+> /sys/class/rfkill/rfkill2/soft:0
+> /sys/class/rfkill/rfkill5/hard:0
+> /sys/class/rfkill/rfkill5/soft:0
+
+And since I actually have the rfkill command, can use that to inspect:
+
+`rfkill`
+
+> ID TYPE DEVICE SOFT HARD
+> 0 wlan phy0 unblocked unblocked
+> 1 wlan dell-wifi unblocked unblocked
+> 2 bluetooth dell-bluetooth unblocked unblocked
+> 5 bluetooth hci0 unblocked unblocked
+
+but who needs rfkill to change that?
+
+`echo 1 | tee /sys/class/rfkill/rfkill[012]/soft >>/dev/null`
+
+`grep . /sys/class/rfkill/rfkill*/{hard,soft} | sort && rfkill`
+
+> /sys/class/rfkill/rfkill0/hard:1
+> /sys/class/rfkill/rfkill0/soft:1
+> /sys/class/rfkill/rfkill1/hard:0
+> /sys/class/rfkill/rfkill1/soft:1
+> /sys/class/rfkill/rfkill2/hard:0
+> /sys/class/rfkill/rfkill2/soft:1
+> ID TYPE DEVICE SOFT HARD
+> 0 wlan phy0 blocked blocked
+> 1 wlan dell-wifi blocked unblocked
+> 2 bluetooth dell-bluetooth blocked unblocked
+
+`echo 0 | tee /sys/class/rfkill/rfkill[012]/soft >>/dev/null`
+
+`grep . /sys/class/rfkill/rfkill*/{hard,soft} | sort && rfkill`
+
+> /sys/class/rfkill/rfkill0/hard:0
+> /sys/class/rfkill/rfkill0/soft:0
+> /sys/class/rfkill/rfkill1/hard:0
+> /sys/class/rfkill/rfkill1/soft:0
+> /sys/class/rfkill/rfkill2/hard:0
+> /sys/class/rfkill/rfkill2/soft:0
+> ID TYPE DEVICE SOFT HARD
+> 0 wlan phy0 unblocked unblocked
+> 1 wlan dell-wifi unblocked unblocked
+> 2 bluetooth dell-bluetooth unblocked unblocked
+
+So, don't need the rfkill command to do the soft unblock/block nor to check the status of hard or soft unblock/block state.
 
 ## Install and configurated sudo
 
 For default, debian not have sudo.
 You have to install them, for this you have to stay as root user:
 
-- `sudo -`
+- `su -`
   With this command you enter to root (enter password of root user)
 - `apt update && apt install sudo -y`
   After installation you have to add your user to the list user for root:
