@@ -21,15 +21,15 @@ Error with an OUTPUT: `RTNETLINK answers: Operation not possible due to RF-kill`
 
 There's also the lovely solving of the rfkill (almost) Catch-22:
 
-    Wi-Fi isn't working
+- Wi-Fi isn't working
 
-    need* rfkill to check/correct that (or so one believes)
+- need\* rfkill to check/correct that (or so one believes)
 
-    don't have other networking or other (at least presently reasonable) means to get the rfkill program (package containing it) onto the host
+- don't have other networking or other (at least presently reasonable) means to get the rfkill program (package containing it) onto the host
 
-    need the Wi-Fi working to get that and other software
+- need the Wi-Fi working to get that and other software
 
-\*well, almost need, the solution:
+well, almost need, the solution:
 
 Here's your first hint:
 
