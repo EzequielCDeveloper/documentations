@@ -74,18 +74,18 @@ Una vez que domines los archivos básicos, agregar estos documentos elevará el 
 
 Si decides usar todos, tu proyecto se vería así de profesional:
 
-proyecto/
-│
-├── LICENSE.md <-- Legalidad
-├── README.md <-- Resumen general
-├── CHANGELOG.md <-- Historial
-├── ROADMAP.md <-- Ventas futuras / Ideas
-├── src/
-│
-└── docs/
-├── ALCANCE.md <-- Contrato funcional
-├── INSTALACION.md <-- Para desarrolladores
-├── MANUAL_USUARIO.md <-- Para el cliente
-├── ARQUITECTURA.md <-- Estructura interna
-├── API.md <-- Conexiones técnicas (si aplica)
+proyecto/  
+│  
+├── LICENSE.md <-- Legalidad  
+├── README.md <-- Resumen general  
+├── CHANGELOG.md <-- Historial  
+├── ROADMAP.md <-- Ventas futuras / Ideas  
+├── src/  
+│  
+└── docs/  
+├── ALCANCE.md <-- Contrato funcional  
+├── INSTALACION.md <-- Para desarrolladores  
+├── MANUAL_USUARIO.md <-- Para el cliente  
+├── ARQUITECTURA.md <-- Estructura interna  
+├── API.md <-- Conexiones técnicas (si aplica)  
 └── FAQ.md <-- Solución de problemas comunes
